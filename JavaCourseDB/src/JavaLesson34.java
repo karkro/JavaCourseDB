@@ -19,7 +19,7 @@ public class JavaLesson34 {
 			// DriverManager is used to handle a set of JDBC drivers
 			// getConnection establishes a connection to the database
 			// You must also pass the user id and password for the database
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Test?useSSL=false", "root", "karolkrol83");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Test?useSSL=false", "karkro", "karolkrol83");
 			
 			// Statement objects executes a SQL query
 			// createStatement returns a Statement object 
