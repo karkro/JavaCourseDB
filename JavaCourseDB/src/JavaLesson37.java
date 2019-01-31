@@ -54,9 +54,9 @@ public class JavaLesson37 extends JFrame {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Test?useSSL=false", "karkro", "karolkrol83");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Test?useSSL=false", "root", "karolkrol83");
 			Statement sqlState = conn.createStatement();
-			String query = "SELECT firstName, lastName, employmentFrom, voivodeship FROM user";
+			String query = "SELECT firstName, lastName, employmentFrom, voivodeship FROM user2";
 			ResultSet rows = sqlState.executeQuery(query);
 			Object[] tempRow;
 			while (rows.next()) {
@@ -76,6 +76,50 @@ public class JavaLesson37 extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		frame.add(scrollPane, BorderLayout.CENTER);
+		
+		JButton addButton = new JButton("Add record");
+		addButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String sFirstName = "", sLastName = "", sEmploymentDate = "", sVoivodeship = "";
+				sFirstName = tfFirstName.getText();
+				sLastName = tfLastName.getText();
+				sEmploymentFrom = tfEmploymentFrom.getText();
+				sVoivodeship = tfVoivodeship.getText();
+				
+				SimpleDateFormat dateFormatter = new SimpleDateFormat("yyy-MM-dd");
+				
+				try {
+					EmploymentFromDate = dateFormatter.parse(sEmploymentDate);
+					sqlEmploymentFrom = new java.sql.Date(EmploymentFromDate.getTime());
+				
+				} catch (ParseException pe) {
+					pe.printStackTrace();
+				}
+				
+				Object[] user = {sFirstName, sLastName, sqlEmploymentFrom, sVoivodeship};
+				dTableModel.addRow(user);
+				
+			}
+		});
+		
+		JButton delButton = new JButton("Delete record");
+		delButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				dTableModel.removeRow(table.getSelectedRow());
+			}
+		});
+		
+		lFirstName = new JLabel("First Name");
+		lLastName = new JLabel("Last Name");
+		lEmploymentFrom = new JLabel("Employment from");
+		lVoivodeship = new JLabel("Voivodeship");
+		
 		
 		
 		frame.setSize(800, 600);
