@@ -4,6 +4,9 @@ import java.awt.font.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +19,9 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DateFormatter;
 
 
 public class JavaLesson38 extends JFrame {
@@ -72,10 +77,33 @@ public class JavaLesson38 extends JFrame {
 		table.setFont(new Font("Arial", Font.PLAIN, 12));
 		table.setRowHeight(table.getRowHeight() + 5);
 		table.setAutoCreateRowSorter(true);
-		
 		JScrollPane scrollPane = new JScrollPane(table);
+		frame.add(scrollPane, BorderLayout.CENTER);
 		
-		frame.add(scrollPane);
+		JButton addButton = new JButton("Add record");
+		addButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String sFirstName = "", sLastName = "", sState = "", sBirthdate;
+				
+				sFirstName = tfFirstName.getText();
+				sLastName = tfLastName.getText();
+				sState = tfState.getText();
+				sBirthdate = tfBirthdate.getText();
+				
+				
+				
+				
+				
+			}
+		});
+		
+		
+		
+		
+		
 		frame.setSize(1200, 600);
 		frame.setVisible(true);
 		
@@ -85,5 +113,24 @@ public class JavaLesson38 extends JFrame {
 		
 		
 	}
+	
+	
+	public static java.util.Date getAData(String sDate) {
+		
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+			
+			dateBirthdate = dateFormatter.parse(sDate);
+			sqlBirthdate = new java.sql.Date(dateBirthdate.getTime());
+			
+		} catch (ParseException pe) {
+			pe.printStackTrace();
+		}
+		
+		return sqlBirthdate;
+		
+	}
+	
 	
 }
