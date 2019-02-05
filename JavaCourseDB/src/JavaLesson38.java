@@ -125,6 +125,7 @@ public class JavaLesson38 extends JFrame {
 		// Adds the scrollpane to the frame
 		frame.add(scrollPane, BorderLayout.CENTER);
 		
+		
 		// Creates a button that when pressed executes the code in the method actionPerformed
 		JButton addButton = new JButton("Add record");
 		addButton.addActionListener(new ActionListener() {
