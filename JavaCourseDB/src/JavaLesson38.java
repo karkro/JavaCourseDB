@@ -297,15 +297,11 @@ public class JavaLesson38 extends JFrame {
 			}
 		});
 		
-		
-
-		
 		frame.setSize(1200, 600);
 		frame.setVisible(true);
 		
-
-		
 	}
+	
 	
 	
 	// Will convert from string to date
