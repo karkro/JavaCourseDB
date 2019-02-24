@@ -80,14 +80,14 @@ public class JavaLesson38 extends JFrame {
 			// DriverManager is used to handle a set of JDBC drivers
 			// getConnection establishes a connection to the database
 			// You must also pass the userid and password for the database
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Test?useSSL=false", "karkro", "karolkrol83");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?useSSL=false", "root", "root");
 			
 			// Statement objects executes a SQL query
 			// createStatement returns a Statement object
 			Statement sqlState = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
 			// This is the query I'm sending to the database
-			String query = "SELECT id_pres, last_name, first_name, state, birth FROM president";
+			String query = "SELECT pres_id, last_name, first_name, state, birth FROM president";
 			
 			// A ResultSet contains a table of data representing the results of the query. 
 			// It can not be changed and can only be read in one direction
